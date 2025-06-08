@@ -1,0 +1,10 @@
+<odoo>
+
+  <menuitem id="hr_hospital_main_menu"
+            web_icon="hr_hospital,static/description/icon.png"
+            name="HR Hospital" sequence="300"/>
+
+  <menuitem id="hr_hospital_menu_drop_down"
+            parent="hr_hospital_main_menu"
+            name="Menu" sequence="100"/>
+</odoo>
