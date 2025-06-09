@@ -6,6 +6,7 @@ _logger = logging.getLogger(__name__)
 
 
 class OSLBook(models.Model):
+
     _name = 'hr.hospital.doctor'
     _description = 'Doctor'
 
