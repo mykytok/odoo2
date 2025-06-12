@@ -15,7 +15,8 @@ class AbstractPerson(models.AbstractModel):
         string='Phone',)
 
     photo = fields.Image(
-        max_widht=512, max_height=512,
+        max_wight=512,
+        max_height=512,
         string='Photo',
     )
 

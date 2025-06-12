@@ -1,0 +1,10 @@
+"id","name","parent_id:id"
+"hrh_disease_4","test disease 1",
+"hrh_disease_5","test disease 2",
+"hrh_disease_6","test disease 1 1","hrh_disease_4"
+"hrh_disease_7","test disease 1 2","hrh_disease_4"
+"hrh_disease_8","test disease 1 2 1","hrh_disease_7"
+"hrh_disease_9","test disease 2 1","hrh_disease_5"
+"hrh_disease_10","test disease 2 2","hrh_disease_5"
+"hrh_disease_11","test disease 2 3","hrh_disease_5"
+"hrh_disease_12","virus 1","hrh_disease_1"

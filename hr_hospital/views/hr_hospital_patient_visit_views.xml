@@ -4,9 +4,11 @@
             <field name="model">hr.hospital.patient.visit</field>
             <field name="arch" type="xml">
                 <tree>
+                    <field name="status"/>
                     <field name="hr_hospital_doctor_id"/>
                     <field name="hr_hospital_patient_id"/>
-                    <field name="hr_hospital_disease_ids" widget="many2many_tags"/>
+                    <field name="scheduled_datetime"/>
+                    <field name="visit_datetime"/>
                     <field name="description"/>
                 </tree>
             </field>
@@ -23,9 +25,10 @@
                             <group>
                                 <field name="hr_hospital_doctor_id"/>
                                 <field name="hr_hospital_patient_id"/>
-                            </group>
-                            <group>
-                                <field name="hr_hospital_disease_ids"  widget="many2many_tags"/>
+                                <field name="hr_hospital_diagnosis_ids"/>
+                                <field name="status"/>
+                                <field name="scheduled_datetime"/>
+                                <field name="visit_datetime"/>
                             </group>
                             <group>
                                 <field name="description"/>

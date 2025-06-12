@@ -25,6 +25,13 @@
                                 <field name="gender" widget="radio"/>
                             </group>
                             <group>
+                                <field name="hr_hospital_personal_doctor_id"/>
+                                <field name="birth_date"/>
+                                <field name="age"/>
+                                <field name="passport_data"/>
+                                <field name="contact_person"/>
+                            </group>
+                            <group>
                                 <field name="photo" widget='image' class="oe_avatar m-0"
                                        options='{"zoom": true, "preview_image":"avatar_256"}'/>
                                 <field name="description"/>

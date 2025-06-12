@@ -1,11 +1,6 @@
-# Візит - (модель "Візити пацієнтів")
-# Хвороба
-# Опис - (Призначення для лікування)
-# Затверджено - (булева ознака) Коментар до пункту 3.3.1: Ця ознака вказує що даний діагноз,
-# зроблений лікарем-ментором, був перевірений та затверджений його ментором.
 import logging
 
-from odoo import models, fields
+from odoo import models, fields, api
 
 _logger = logging.getLogger(__name__)
 
@@ -13,8 +8,6 @@ _logger = logging.getLogger(__name__)
 class Diagnosis(models.Model):
     _name = 'hr.hospital.diagnosis'
     _description = 'Diagnosis'
-
-    name = fields.Char()
 
     hr_hospital_patient_visit_id = fields.Many2one(
         comodel_name='hr.hospital.patient.visit',
@@ -27,7 +20,6 @@ class Diagnosis(models.Model):
     )
 
     approved = fields.Boolean(
-        default=False,
         string="Approved",
     )
 
@@ -35,3 +27,19 @@ class Diagnosis(models.Model):
         default=True, )
 
     description = fields.Text()
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if 'hr_hospital_patient_visit_id' in vals:
+                patient_visits = self.env['hr.hospital.patient.visit'].search([('id', '=', vals['hr_hospital_patient_visit_id'])])
+                for hr_hospital_patient_visit_id in patient_visits:
+                    if not hr_hospital_patient_visit_id.hr_hospital_doctor_id.is_intern:
+                        vals["approved"] = True
+        return super().create(vals_list)
+
+    @api.depends('hr_hospital_patient_visit_id')
+    def _compute_approved(self):
+        for rec in self:
+            if not rec.hr_hospital_patient_visit_id.hr_hospital_doctor_id.is_intern:
+                rec.approved = True
