@@ -9,20 +9,17 @@ class AbstractPerson(models.AbstractModel):
     _name = 'hr.hospital.abstract.person'
     _description = 'Person'
 
-    full_name = fields.Char(string='Full Name',)
+    full_name = fields.Char()
 
-    phone = fields.Char(
-        string='Phone',)
+    phone = fields.Char()
 
     photo = fields.Image(
         max_wight=512,
         max_height=512,
-        string='Photo',
     )
 
     gender = fields.Selection(
         [('male', 'Male'),
          ('female', 'Female')],
         # default="_",
-        string='Gender',
     )

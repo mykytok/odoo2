@@ -7,4 +7,5 @@
   <menuitem id="hr_hospital_menu_drop_down"
             parent="hr_hospital_main_menu"
             name="Menu" sequence="100"/>
+
 </odoo>

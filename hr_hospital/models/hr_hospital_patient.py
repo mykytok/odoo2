@@ -3,8 +3,6 @@ import logging
 
 from odoo import models, fields, api
 
-from . import hr_hospital_abstract_person
-
 _logger = logging.getLogger(__name__)
 
 
@@ -45,4 +43,7 @@ class Patient(models.Model):
         today = datetime.date.today()
         for record in self:
             record.age = (today.year - record.birth_date.year
-                          - ((today.month, today.day) < (record.birth_date.month, record.birth_date.day)))
+                          - ((today.month,
+                              today.day)
+                             < (record.birth_date.month,
+                                record.birth_date.day)))

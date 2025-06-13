@@ -37,7 +37,7 @@ class Doctor(models.Model):
             _logger.info('==========================')
             _logger.info(rec.mentor_doctor_id.is_intern)
             if rec.mentor_doctor_id.is_intern:
-                raise exceptions.ValidationError("Intern cannot be a mentor.")
+                raise exceptions.UserError("Intern cannot be a mentor.")
 
     @api.onchange('is_intern')
     def _onchange_is_intern(self):

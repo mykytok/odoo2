@@ -4,7 +4,13 @@
             <field name="model">hr.hospital.patient</field>
             <field name="arch" type="xml">
                 <tree>
+                    <header>
+                        <button name="%(hr_hospital.hr_hospital_personal_doctor_update_wizard_action)d"
+                                string="Update personal doctor" type="action" class="oe_stat_button"
+                                display="always"/>
+                    </header>
                     <field name="name"/>
+                    <field name="hr_hospital_personal_doctor_id"/>
                     <field name="description"/>
                 </tree>
             </field>

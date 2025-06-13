@@ -4,6 +4,11 @@
             <field name="model">hr.hospital.patient.visit</field>
             <field name="arch" type="xml">
                 <tree>
+                    <header>
+                        <button name="%(hr_hospital.hr_hospital_diagnosis_report_action)d"
+                                string="Diagnosis report" type="action" class="oe_stat_button"
+                                display="always"/>
+                    </header>
                     <field name="status"/>
                     <field name="hr_hospital_doctor_id"/>
                     <field name="hr_hospital_patient_id"/>

@@ -19,9 +19,7 @@ class Diagnosis(models.Model):
         string="Disease",
     )
 
-    approved = fields.Boolean(
-        string="Approved",
-    )
+    approved = fields.Boolean()
 
     active = fields.Boolean(
         default=True, )
@@ -32,14 +30,18 @@ class Diagnosis(models.Model):
     def create(self, vals_list):
         for vals in vals_list:
             if 'hr_hospital_patient_visit_id' in vals:
-                patient_visits = self.env['hr.hospital.patient.visit'].search([('id', '=', vals['hr_hospital_patient_visit_id'])])
+                patient_visits = self.env['hr.hospital.patient.visit'].search(
+                    [('id', '=', vals['hr_hospital_patient_visit_id'])]
+                )
                 for hr_hospital_patient_visit_id in patient_visits:
-                    if not hr_hospital_patient_visit_id.hr_hospital_doctor_id.is_intern:
+                    if not (hr_hospital_patient_visit_id
+                            .hr_hospital_doctor_id.is_intern):
                         vals["approved"] = True
         return super().create(vals_list)
 
     @api.depends('hr_hospital_patient_visit_id')
     def _compute_approved(self):
         for rec in self:
-            if not rec.hr_hospital_patient_visit_id.hr_hospital_doctor_id.is_intern:
+            if not (rec.hr_hospital_patient_visit_id
+                    .hr_hospital_doctor_id.is_intern):
                 rec.approved = True
