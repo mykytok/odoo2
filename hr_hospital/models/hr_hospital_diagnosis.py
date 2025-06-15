@@ -14,12 +14,18 @@ class Diagnosis(models.Model):
         string="Visit",
     )
 
+    doctor_id = fields.Many2one(
+        related='hr_hospital_patient_visit_id.hr_hospital_doctor_id'
+    )
+
     hr_hospital_disease_id = fields.Many2one(
         comodel_name='hr.hospital.disease',
         string="Disease",
     )
 
-    approved = fields.Boolean()
+    approved = fields.Boolean(
+        compute='_compute_approved'
+    )
 
     active = fields.Boolean(
         default=True, )
@@ -40,8 +46,7 @@ class Diagnosis(models.Model):
         return super().create(vals_list)
 
     @api.depends('hr_hospital_patient_visit_id')
+    @api.onchange('hr_hospital_patient_visit_id')
     def _compute_approved(self):
         for rec in self:
-            if not (rec.hr_hospital_patient_visit_id
-                    .hr_hospital_doctor_id.is_intern):
-                rec.approved = True
+            rec.approved = not rec.doctor_id.is_intern

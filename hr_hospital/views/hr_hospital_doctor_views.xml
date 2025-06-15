@@ -4,7 +4,7 @@
             <field name="model">hr.hospital.doctor</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name"/>
+                    <field name="full_name"/>
                     <field name="doctors_specialty_id"/>
                     <field name="is_intern"/>
                     <field name="mentor_doctor_id"/>
@@ -22,13 +22,12 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="name"/>
+                                <field name="full_name"/>
                                 <field name="doctors_specialty_id"/>
                                 <field name="is_intern"/>
                                 <field name="mentor_doctor_id" invisible="not is_intern"/>
                             </group>
                             <group>
-                                <field name="full_name"/>
                                 <field name="phone"/>
                                 <field name="gender" widget="radio"/>
                                 <field name="photo" widget='image' class="oe_avatar m-0"

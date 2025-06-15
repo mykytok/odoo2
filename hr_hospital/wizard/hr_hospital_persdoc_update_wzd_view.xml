@@ -1,7 +1,7 @@
 <odoo>
-    <record id="hr_hospital_personal_doctor_update_wizard_form" model="ir.ui.view">
-        <field name="name">hr.hospital.personal.doctor.update.wizard.form</field>
-        <field name="model">hr.hospital.personal.doctor.update.wizard</field>
+    <record id="hr_hospital_persdoc_update_wzd_form" model="ir.ui.view">
+        <field name="name">hr.hospital.persdoc.update.wzd.form</field>
+        <field name="model">hr.hospital.persdoc.update.wzd</field>
         <field name="arch" type="xml">
             <form>
                 <div class="alert alert-info text-center" role="status">
@@ -9,6 +9,7 @@
                 </div>
                 <group>
                     <group>
+                        <field name="patient_ids"/>
                         <field name="doctor_id"/>
                     </group>
                 </group>
@@ -20,9 +21,9 @@
         </field>
     </record>
 
-    <record id="hr_hospital_personal_doctor_update_wizard_action" model="ir.actions.act_window">
+    <record id="hr_hospital_persdoc_update_wzd_action" model="ir.actions.act_window">
         <field name="name">Update personal doctor</field>
-        <field name="res_model">hr.hospital.personal.doctor.update.wizard</field>
+        <field name="res_model">hr.hospital.persdoc.update.wzd</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
     </record>

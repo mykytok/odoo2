@@ -1,6 +1,6 @@
 import logging
 
-from odoo import models, fields
+from odoo import models, fields, api
 
 _logger = logging.getLogger(__name__)
 
@@ -23,3 +23,8 @@ class AbstractPerson(models.AbstractModel):
          ('female', 'Female')],
         # default="_",
     )
+
+    @api.depends('full_name')
+    def _compute_display_name(self):
+        for rec in self:
+            rec.display_name = rec.full_name

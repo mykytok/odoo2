@@ -1,2 +1,2 @@
-from . import hr_hospital_personal_doctor_update_wizard
+from . import hr_hospital_persdoc_update_wzd
 from . import hr_hospital_diagnosis_report

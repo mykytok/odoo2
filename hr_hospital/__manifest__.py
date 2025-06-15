@@ -17,7 +17,7 @@
     'data': [
         'security/ir.model.access.csv',
 
-        'wizard/hr_hospital_personal_doctor_update_wizard_view.xml',
+        'wizard/hr_hospital_persdoc_update_wzd_view.xml',
         'wizard/hr_hospital_diagnosis_report_view.xml',
 
         'views/hr_hospital_menu.xml',
