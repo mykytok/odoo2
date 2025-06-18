@@ -22,6 +22,11 @@ class Diagnosis(models.Model):
         related='hr_hospital_patient_visit_id.hr_hospital_patient_id'
     )
 
+    visit_datetime = fields.Datetime(
+        related='hr_hospital_patient_visit_id.visit_datetime',
+        store = True
+    )
+
     hr_hospital_disease_id = fields.Many2one(
         comodel_name='hr.hospital.disease',
         string="Disease",
