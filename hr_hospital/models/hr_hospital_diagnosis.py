@@ -18,6 +18,10 @@ class Diagnosis(models.Model):
         related='hr_hospital_patient_visit_id.hr_hospital_doctor_id'
     )
 
+    patient_id = fields.Many2one(
+        related='hr_hospital_patient_visit_id.hr_hospital_patient_id'
+    )
+
     hr_hospital_disease_id = fields.Many2one(
         comodel_name='hr.hospital.disease',
         string="Disease",

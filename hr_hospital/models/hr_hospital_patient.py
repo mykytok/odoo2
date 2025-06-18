@@ -36,6 +36,12 @@ class Patient(models.Model):
 
     description = fields.Text()
 
+    diagnosis_ids = fields.One2many(
+        comodel_name='hr.hospital.diagnosis',
+        inverse_name='patient_id',
+        string="Diagnosis",
+    )
+
     @api.depends('birth_date')
     def _compute_age(self):
         today = datetime.date.today()
@@ -45,3 +51,4 @@ class Patient(models.Model):
                               today.day)
                              < (record.birth_date.month,
                                 record.birth_date.day)))
+

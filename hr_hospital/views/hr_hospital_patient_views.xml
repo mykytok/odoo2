@@ -11,7 +11,8 @@
                     </header>
                     <field name="full_name"/>
                     <field name="hr_hospital_personal_doctor_id"/>
-                    <field name="description"/>
+                    <field name="phone"/>
+                    <field name="age"/>
                 </tree>
             </field>
         </record>
@@ -21,7 +22,19 @@
             <field name="model">hr.hospital.patient</field>
             <field name="arch" type="xml">
                 <form>
-                    <header></header>
+                    <header>
+                        <button
+                                name="%(action_select_patient_hr_hospital_patient_visit_window)d"
+                                string="Visits" type="action" class="oe_stat_button"/>
+                        <button
+                                name="%(action_add_hr_hospital_patient_visit_window)d"
+                                string="Add visit"
+                                type="action"
+                                class="oe_stat_button"
+                                context="{
+                                'default_hr_hospital_patient_id': id,
+                                'default_hr_hospital_doctor_id': hr_hospital_personal_doctor_id}"/>
+                    </header>
                     <sheet>
                         <group>
                             <group>
@@ -41,9 +54,28 @@
                                        options='{"zoom": true, "preview_image":"avatar_256"}'/>
                                 <field name="description"/>
                             </group>
+                            <field name="diagnosis_ids">
+                               <tree limit="15" create="False" delete="False">
+                                   <field name="doctor_id"/>
+                                   <field name="approved"/>
+                                   <field name="hr_hospital_disease_id"/>
+                                   <field name="description"/>
+                               </tree>
+                            </field>
                         </group>
                     </sheet>
                 </form>
+            </field>
+        </record>
+
+        <record id="hr_hospital_patient_search" model="ir.ui.view">
+            <field name="name">hr.hospital.patient.search (hr_hospital_patient)</field>
+            <field name="model">hr.hospital.patient</field>
+            <field name="arch" type="xml">
+                <search string="Filters">
+                    <field name="full_name"/>
+                    <field name="phone"/>
+                </search>
             </field>
         </record>
 
