@@ -20,6 +20,7 @@ class Disease(models.Model):
         inverse_name='parent_id',
         string='Children'
     )
+
     parent_path = fields.Char(index=True, unaccent=False)
 
     active = fields.Boolean(

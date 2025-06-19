@@ -2,11 +2,30 @@
         <record id="hr_hospital_diagnosis_tree" model="ir.ui.view">
             <field name="name">hr.hospital.diagnosis.tree ()</field>
             <field name="model">hr.hospital.diagnosis</field>
+            <field name="priority">100</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="visit_datetime"/>
                     <field name="hr_hospital_disease_id"/>
                     <field name="approved"/>
+                    <field name="doctor_id"/>
+                    <field name="patient_id"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_hospital_diagnosis_tree_group_disease" model="ir.ui.view">
+            <field name="name">hr.hospital.diagnosis.tree2 ()</field>
+            <field name="model">hr.hospital.diagnosis</field>
+            <field name="priority">500</field>
+            <field name="arch" type="xml">
+                <tree default_group_by="hr_hospital_disease_id">
+                    <field name="visit_datetime"/>
+                    <field name="hr_hospital_disease_id"/>
+                    <field name="approved"/>
+                    <field name="doctor_id"/>
+                    <field name="patient_id"/>
                     <field name="description"/>
                 </tree>
             </field>
@@ -23,6 +42,8 @@
                                 <field name="visit_datetime"/>
                                 <field name="hr_hospital_disease_id"/>
                                 <field name="approved"/>
+                                <field name="doctor_id"/>
+                                <field name="patient_id"/>
                             </group>
                             <group>
                                 <field name="description"/>

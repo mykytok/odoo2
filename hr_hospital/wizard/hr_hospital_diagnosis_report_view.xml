@@ -7,16 +7,18 @@
                 <div class="alert alert-info text-center" role="status">
                     Hospital diagnosis report
                 </div>
-                <group>
-                    <group>
-                        <field name="doctor_ids"/>
-                        <field name="disease_ids"/>
-                        <field name="start_date"/>
-                        <field name="end_date"/>
-                    </group>
+                <group col="2">
+                    <group><field name="start_date"/></group>
+                    <group><field name="end_date"/></group>
+                    <group><field name="doctor_ids"/></group>
+                    <group><field name="disease_ids"/></group>
                 </group>
                 <footer>
-                    <button string="Update" name="update_diagnosis_ids" type="object" class="oe_highlight" data-hotkey="q"/>
+                    <button string="Update"
+                            name="update_diagnosis_ids"
+                            type="object"
+                            class="oe_highlight" data-hotkey="q"
+                    />
                     <button string="Cancel" class="btn btn-secondary" special="cancel" data-hotkey="x"/>
                 </footer>
             </form>
@@ -24,10 +26,12 @@
     </record>
 
     <record id="hr_hospital_diagnosis_report_action" model="ir.actions.act_window">
-        <field name="name">Update personal doctor</field>
+        <field name="name">Diagnosis report</field>
         <field name="res_model">hr.hospital.diagnosis.report</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
+        <field name="binding_model_id" ref="hr_hospital.model_hr_hospital_doctor"/>
+        <field name="binding_type">report</field>
     </record>
 
 </odoo>

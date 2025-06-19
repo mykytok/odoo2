@@ -1,6 +1,6 @@
 import logging
 
-from odoo import models, fields
+from odoo import models, fields, api
 
 _logger = logging.getLogger(__name__)
 
@@ -23,6 +23,14 @@ class DiagnosisReport(models.TransientModel):
     end_date = fields.Date(
         string="End date"
     )
+
+    @api.model
+    def default_get(self, vals):
+        res = super().default_get(vals)
+        if self.env.context.get('active_ids'):
+            active_doctor_ids = self.env['hr.hospital.doctor'].browse(self.env.context.get('active_ids'))
+            res['doctor_ids'] = [(6, 0, active_doctor_ids.mapped('id'))]
+        return res
 
     def update_diagnosis_ids(self):
         self.ensure_one()
@@ -47,7 +55,14 @@ class DiagnosisReport(models.TransientModel):
                  self.mapped('disease_ids.id'))
             )
         rec = self.env['hr.hospital.diagnosis'].search(search_list)
-        _logger.info('===rec===')
-        _logger.info(rec)
 
-        return rec
+        return {
+            'name': 'Diagnosis',
+            'views': [[self.env.ref('hr_hospital.hr_hospital_diagnosis_tree_group_disease').id,'tree']],
+            'type': 'ir.actions.act_window',
+            'res_model': 'hr.hospital.diagnosis',
+            'view_mode': 'tree',
+            'res_id': False,
+            'target': 'self',
+            'domain': [('id', 'in', rec.mapped('id'))],
+        }
