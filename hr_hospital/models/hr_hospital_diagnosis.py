@@ -24,7 +24,7 @@ class Diagnosis(models.Model):
 
     visit_datetime = fields.Datetime(
         related='hr_hospital_patient_visit_id.visit_datetime',
-        store = True
+        store=True
     )
 
     hr_hospital_disease_id = fields.Many2one(

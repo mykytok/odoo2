@@ -23,7 +23,8 @@ class PersonalDoctorUpdate(models.TransientModel):
     def default_get(self, vals):
         res = super().default_get(vals)
         if self.env.context.get('active_ids'):
-            active_patient_ids = self.env['hr.hospital.patient'].browse(self.env.context.get('active_ids'))
+            active_patient_ids = (self.env['hr.hospital.patient']
+                                  .browse(self.env.context.get('active_ids')))
             res['patient_ids'] = [(6, 0, active_patient_ids.mapped('id'))]
         return res
 

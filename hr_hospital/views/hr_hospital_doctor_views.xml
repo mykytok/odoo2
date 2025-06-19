@@ -26,6 +26,25 @@
                                 <field name="doctors_specialty_id"/>
                                 <field name="is_intern"/>
                                 <field name="mentor_doctor_id" invisible="not is_intern"/>
+                                <field name="mentor_doctors_specialty_id" invisible="not is_intern"/>
+                                <field name="intern_doctor_ids" mode="kanban" string="Interns">
+                                    <kanban class="o_kanban_small_column">
+                                        <templates>
+                                            <t t-name="kanban-box">
+                                                <div class="oe_kanban_global_click">
+                                                    <strong>
+                                                        <field name="full_name"/>
+                                                    </strong>
+                                                    <div>
+                                                        <span class="o_kanban_record_subtitle">
+                                                            Specialty: <field name="doctors_specialty_id"/>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </templates>
+                                    </kanban>
+                                </field>
                             </group>
                             <group>
                                 <field name="phone"/>
@@ -71,6 +90,17 @@
                         </t>
                     </templates>
                 </kanban>
+            </field>
+        </record>
+
+        <record id="hr_hospital_doctor_search" model="ir.ui.view">
+            <field name="name">hr.hospital.doctor.search (hr_hospital_doctor)</field>
+            <field name="model">hr.hospital.doctor</field>
+            <field name="arch" type="xml">
+                <search>
+                    <filter string='Only mentors' name="is_mentor" domain="[('is_intern', '=', False)]"/>
+                    <filter string='Only interns' name="is_intern" domain="[('is_intern', '=', True)]"/>
+                </search>
             </field>
         </record>
 

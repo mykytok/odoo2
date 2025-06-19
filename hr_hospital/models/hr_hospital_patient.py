@@ -51,4 +51,3 @@ class Patient(models.Model):
                               today.day)
                              < (record.birth_date.month,
                                 record.birth_date.day)))
-

@@ -24,6 +24,16 @@ class Doctor(models.Model):
         string="Mentor doctor",
     )
 
+    mentor_doctors_specialty_id = fields.Many2one(
+        related='mentor_doctor_id.doctors_specialty_id',
+        string="Mentor's specialty"
+    )
+
+    intern_doctor_ids = fields.One2many(
+        comodel_name='hr.hospital.doctor',
+        inverse_name='mentor_doctor_id',
+    )
+
     active = fields.Boolean(
         default=True, )
 
