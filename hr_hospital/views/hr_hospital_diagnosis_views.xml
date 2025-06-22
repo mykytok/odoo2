@@ -54,6 +54,18 @@
             </field>
         </record>
 
+        <record id="hr_hospital_diagnosis_graph" model="ir.ui.view">
+            <field name="name">hr.hospital.diagnosis.graph (hr_hospital_diagnosis)</field>
+            <field name="model">hr.hospital.diagnosis</field>
+            <field name="priority">60</field>
+            <field name="arch" type="xml">
+                <graph string="Diagnosis graph" stacked="0">
+                    <field name="hr_hospital_disease_id"/>
+                    <field name="visit_datetime" interval="month"/>
+                </graph>
+            </field>
+        </record>
+
         <record id="hr_hospital_diagnosis_pivot" model="ir.ui.view">
             <field name="name">hr.hospital.diagnosis.pivot (hr_hospital_diagnosis_visit)</field>
             <field name="model">hr.hospital.diagnosis</field>
@@ -71,7 +83,7 @@
             <field name="name">Diagnosis</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">hr.hospital.diagnosis</field>
-            <field name="view_mode">tree,form,pivot</field>
+            <field name="view_mode">tree,form,pivot,graph</field>
         </record>
 
         <menuitem id="hr_hospital_menu_diagnosis"
