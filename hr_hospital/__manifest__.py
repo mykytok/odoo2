@@ -27,6 +27,7 @@
         'views/hr_hospital_doctor_views.xml',
         'views/hr_hospital_patient_views.xml',
         'views/hr_hospital_diagnosis_views.xml',
+        'report/doctor_report.xml',
 
         'data/hr.hospital.disease.csv',
     ],

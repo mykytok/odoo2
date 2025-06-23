@@ -34,6 +34,16 @@ class Doctor(models.Model):
         inverse_name='mentor_doctor_id',
     )
 
+    patient_visit_ids = fields.One2many(
+        comodel_name='hr.hospital.patient.visit',
+        inverse_name='hr_hospital_doctor_id',
+    )
+
+    patient_ids = fields.One2many(
+        comodel_name='hr.hospital.patient',
+        inverse_name='hr_hospital_personal_doctor_id',
+    )
+
     active = fields.Boolean(
         default=True, )
 
@@ -52,3 +62,7 @@ class Doctor(models.Model):
         for rec in self:
             if not rec.is_intern:
                 rec.mentor_doctor_id = []
+
+    def _get_report_base_filename(self):
+        self.ensure_one()
+        return 'Doctor - %s' % (self.full_name)
