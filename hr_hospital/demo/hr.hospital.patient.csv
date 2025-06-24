@@ -1,5 +1,5 @@
-"id","full_name"
-"hrh_patient_1","Charlotte",
-"hrh_patient_2","Mia"
-"hrh_patient_3","Liam"
-"hrh_patient_4","Oliver"
+"id","full_name","gender","hr_hospital_personal_doctor_id:id"
+"hrh_patient_1","Charlotte","female","hr_hospital.hrh_doctor_1"
+"hrh_patient_2","Mia","female","hr_hospital.hrh_doctor_1"
+"hrh_patient_3","Liam","male","hr_hospital.hrh_doctor_1"
+"hrh_patient_4","Oliver","male","hr_hospital.hrh_doctor_2"

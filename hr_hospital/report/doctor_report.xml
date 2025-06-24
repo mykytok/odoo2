@@ -7,13 +7,13 @@
         <field name="page_height">0</field>
         <field name="page_width">0</field>
         <field name="orientation">Landscape</field>
-        <field name="margin_top">80</field>
-        <field name="margin_bottom">15</field>
-        <field name="margin_left">15</field>
-        <field name="margin_right">15</field>
+        <field name="margin_top">35</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
         <field name="header_line" eval="False" />
-        <field name="header_spacing">15</field>
-        <field name="dpi">180</field>
+        <field name="header_spacing">30</field>
+        <field name="dpi">90</field>
     </record>
 
     <record id="hr_hospital_doctor_main_report" model="ir.actions.report">
@@ -29,105 +29,55 @@
         <field name="paperformat_id" ref="hr_hospital.hr_hospital_doctor_paperformat"/>
     </record>
 
-<!--    <template id="doctor_report_title_template" name="doctor title">-->
-<!--        <t t-call="web.external_layout">-->
-<!--            <main>-->
-<!--                &lt;!&ndash;        <h1>This is a block of HTML</h1>&ndash;&gt;-->
-<!--                &lt;!&ndash;        <h2>And this is the subtitle</h2>&ndash;&gt;-->
-<!--                <h1>John Doe</h1>-->
-<!--                <t>-->
-<!--                    <a href="#">About Me</a>-->
-<!--                    <a href="#">Projects</a>-->
-<!--                    <a href="#">Contact</a>-->
-<!--                </t>-->
-
-<!--                <h2>Welcome to My Portfolio!</h2>-->
-<!--                <p>Hi! I’m John, a passionate web developer. Below are some of my favorite projects that I’ve worked on.</p>-->
-
-<!--                <div class="projects">-->
-<!--                    <div class="project">-->
-<!--                        <h3>Project 1</h3>-->
-<!--                        <p>A cool project about web development.</p>-->
-<!--                    </div>-->
-<!--                    <div class="project">-->
-<!--                        <h3>Project 2</h3>-->
-<!--                        <p>An amazing mobile app I created.</p>-->
-<!--                    </div>-->
-<!--                    <div class="project">-->
-<!--                        <h3>Project 3</h3>-->
-<!--                        <p>A fun machine learning project.</p>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-<!--                <h2>Interact with Me!</h2>-->
-<!--                <p>Click the button to see a surprise message:</p>-->
-<!--                <button onclick="showMessage()">Click Me!</button>-->
-<!--                <p id="message" style="color: green; font-weight: bold;"></p>-->
-
-<!--                <footer>-->
-<!--                    <p>2024 John Doe. All rights reserved.</p>-->
-<!--                </footer>-->
-
-<!--                <script>-->
-<!--                    function showMessage() {-->
-<!--                    document.getElementById('message').textContent = "Hello! Thanks for visiting my portfolio!";-->
-<!--                    }-->
-<!--                </script>-->
-<!--            </main>-->
-<!--        </t>-->
-
-<!--    </template>-->
-
-
     <template id="doctor_report_main_template">
         <t t-call="web.external_layout">
             <main>
                 <t t-foreach="docs" t-as="o">
-                    <div class="row">
+                    <hr/>
+                    <div>
                         <div name="doctor_title">
                             <h1><div t-field="o.full_name"/></h1>
                             <h2><div t-field="o.doctors_specialty_id"/></h2>
 
                         </div>
                         <div name="patient_visit">
-<!--                            <t t-set="rec_patient_visit" t-value="o.env['hr_hospital.hr_hospital_patient_visit'].search([('hr_hospital_doctor_id', '=', o.id)], order='scheduled_datetime desc')" />-->
-                            <h3>Visits history</h3>
+                            <lable>Visits history</lable>
                             <table border="1"
                                    style="border: 1px solid; border-collapse: collapse; text-align: left;">
                                 <tbody>
                                     <tr style="background-color: #eceff1">
-                                        <th>
+                                        <th style="padding: 4px;">
                                             Scheduled date
                                         </th>
-                                        <th>
+                                        <th style="padding: 4px;">
                                             Visit date
                                         </th>
-                                        <th>
+                                        <th style="padding: 4px;">
                                             Status
                                         </th>
-                                        <th>
+                                        <th style="padding: 4px;">
                                             Patient
                                         </th>
-                                        <th>
+                                        <th style="padding: 4px;">
                                             Description
                                         </th>
                                     </tr>
                                     <t t-foreach="o.patient_visit_ids.sorted(key='scheduled_datetime', reverse=True)"
                                        t-as="patient_visit">
                                         <tr>
-                                            <td>
+                                            <td style="padding: 4px;">
                                                 <span t-field="patient_visit.scheduled_datetime"/>
                                             </td>
-                                            <td>
+                                            <td style="padding: 4px;">
                                                 <span t-field="patient_visit.visit_datetime"/>
                                             </td>
-                                            <td>
+                                            <td style="padding: 4px;">
                                                 <span t-field="patient_visit.status"/>
                                             </td>
-                                            <td>
+                                            <td style="padding: 4px;">
                                                 <span t-field="patient_visit.hr_hospital_patient_id"/>
                                             </td>
-                                            <td>
+                                            <td style="padding: 4px;">
                                                 <span t-field="patient_visit.description"/>
                                             </td>
                                         </tr>
@@ -135,46 +85,53 @@
                                 </tbody>
                             </table>
                         </div>
+                        <br/>
                         <div name="patients">
-                            <h3>Patients</h3>
+                            <lable>Patients</lable>
                             <table border="1"
                                    style="border: 1px solid; border-collapse: collapse; text-align: left;">
                                 <tbody>
                                     <tr style="background-color: #eceff1">
-                                        <th>
+                                        <th style="padding: 4px;">
                                             Full name
                                         </th>
-                                        <th>
+                                        <th style="padding: 4px;">
                                             Gender
                                         </th>
-                                        <th>
+                                        <th style="padding: 4px;">
                                             Date of birth
                                         </th>
-                                        <th>
+                                        <th style="padding: 4px;">
                                             Phone
                                         </th>
-                                        <th>
+                                        <th style="padding: 4px;">
                                             Current status
                                         </th>
                                     </tr>
                                     <t t-foreach="o.patient_ids.sorted(key='full_name')"
                                        t-as="patient">
                                         <tr>
-                                            <td>
+                                            <td style="padding: 4px;">
                                                 <span t-field="patient.full_name"/>
                                             </td>
-                                            <td>
+                                            <td style="padding: 4px;">
                                                 <span t-field="patient.gender"/>
                                             </td>
-                                            <td>
+                                            <td style="padding: 4px;">
                                                 <span t-field="patient.birth_date"/>
                                             </td>
-                                            <td>
+                                            <td style="padding: 4px;">
                                                 <span t-field="patient.phone"/>
                                             </td>
-                                            <td>
-                                                <t t-set="patient_current_status" t-value="patient.current_patient_visit_status(o)"/>
-                                                <t t-out="patient_current_status"/>
+                                            <t t-set="patient_current_status" t-value="patient.current_patient_visit_status(o)"/>
+                                            <t t-set="status_bg_color">
+                                                <t t-if="patient_current_status == 'scheduled'">#FFFF00</t>
+                                                <t t-elif="patient_current_status =='completed'">#BDFC49</t>
+                                                <t t-elif="patient_current_status == 'cancelled'">#E2A392</t>
+                                                <t t-else="">#000000</t>
+                                            </t>
+                                            <td t-attf-style="background-color:{{ status_bg_color }}; padding: 4px;">
+                                                <span t-out="patient_current_status"/>
                                             </td>
                                         </tr>
                                     </t>
@@ -183,6 +140,12 @@
                         </div>
                     </div>
                 </t>
+                <div class="footer o_standard_footer" style="position: relative;">
+                    <div>
+                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d.%m.%Y %H:%M')"/>
+                        <span t-field="o.env.company.city"/>
+                    </div>
+                </div>
             </main>
         </t>
     </template>

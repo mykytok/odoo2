@@ -34,6 +34,11 @@ class Doctor(models.Model):
         inverse_name='mentor_doctor_id',
     )
 
+    is_mentor = fields.Boolean(
+        compute='_compute_is_mentor',
+        default=False
+    )
+
     patient_visit_ids = fields.One2many(
         comodel_name='hr.hospital.patient.visit',
         inverse_name='hr_hospital_doctor_id',
@@ -66,3 +71,12 @@ class Doctor(models.Model):
     def _get_report_base_filename(self):
         self.ensure_one()
         return 'Doctor - %s' % (self.full_name)
+
+    @api.depends('intern_doctor_ids')
+    def _compute_is_mentor(self):
+        for record in self:
+            record.is_mentor = record.intern_doctor_ids
+
+    def archive(self):
+        for rec in self:
+            rec.write({'active': False})
