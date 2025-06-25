@@ -33,7 +33,8 @@ class Diagnosis(models.Model):
     )
 
     approved = fields.Boolean(
-        compute='_compute_approved'
+        compute='_compute_approved',
+        store=True
     )
 
     active = fields.Boolean(
@@ -54,8 +55,8 @@ class Diagnosis(models.Model):
                         vals["approved"] = True
         return super().create(vals_list)
 
-    @api.depends('hr_hospital_patient_visit_id')
-    @api.onchange('hr_hospital_patient_visit_id')
+    @api.depends('doctor_id')
+    @api.onchange('doctor_id')
     def _compute_approved(self):
         for rec in self:
             rec.approved = not rec.doctor_id.is_intern

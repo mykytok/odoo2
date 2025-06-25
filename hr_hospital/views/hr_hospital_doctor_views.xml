@@ -22,6 +22,7 @@
                     <sheet>
                         <group>
                             <group>
+                                <field name="res_user_id"/>
                                 <field name="full_name"/>
                                 <field name="doctors_specialty_id"/>
                                 <field name="is_intern"/>

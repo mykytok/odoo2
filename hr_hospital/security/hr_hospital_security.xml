@@ -1,0 +1,99 @@
+<odoo>
+
+    <record id="hr_hospital_rule_patient_visit" model="ir.rule">
+        <field name="name">Patients can only view own visits</field>
+        <field name="model_id" ref="model_hr_hospital_patient_visit"/>
+        <field name="domain_force">[('hr_hospital_patient_id.res_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_hr_hospital_patient'))]"/>
+    </record>
+
+    <record id="hr_hospital_rule_patient_diagnosis" model="ir.rule">
+        <field name="name">Patients can only view own diagnosis</field>
+        <field name="model_id" ref="model_hr_hospital_diagnosis"/>
+        <field name="domain_force">
+            [('hr_hospital_patient_visit_id.hr_hospital_patient_id.res_user_id', '=', user.id)]
+        </field>
+        <field name="groups" eval="[(4, ref('group_hr_hospital_patient'))]"/>
+    </record>
+
+    <record id="hr_hospital_rule_intern_visit" model="ir.rule">
+        <field name="name">Intern can only read and write own visits</field>
+        <field name="model_id" ref="model_hr_hospital_patient_visit"/>
+        <field name="domain_force">[('hr_hospital_doctor_id.res_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_hr_hospital_intern'))]"/>
+    </record>
+
+    <record id="hr_hospital_rule_intern_diagnosis" model="ir.rule">
+        <field name="name">Interns can only read and write own diagnosis</field>
+        <field name="model_id" ref="model_hr_hospital_diagnosis"/>
+        <field name="domain_force">
+            [('hr_hospital_patient_visit_id.hr_hospital_doctor_id.res_user_id', '=', user.id)]
+        </field>
+        <field name="groups" eval="[(4, ref('group_hr_hospital_intern'))]"/>
+    </record>
+
+    <record id="hr_hospital_rule_doctor_visit" model="ir.rule">
+        <field name="name">Doctor can only read and write own visits and intern's visits</field>
+        <field name="model_id" ref="model_hr_hospital_patient_visit"/>
+        <field name="domain_force">['|',
+            ('hr_hospital_doctor_id.res_user_id', '=', user.id),
+            ('hr_hospital_doctor_id.mentor_doctor_id.res_user_id', '=', user.id)]
+        </field>
+        <field name="groups" eval="[(4, ref('group_hr_hospital_doctor'))]"/>
+    </record>
+
+    <record id="hr_hospital_rule_doctor_diagnosis" model="ir.rule">
+        <field name="name">Doctor can only read and write own diagnosis and intern's diagnosis</field>
+        <field name="model_id" ref="model_hr_hospital_diagnosis"/>
+        <field name="domain_force">['|',
+            ('hr_hospital_patient_visit_id.hr_hospital_doctor_id.res_user_id', '=', user.id),
+            ('hr_hospital_patient_visit_id.hr_hospital_doctor_id.mentor_doctor_id.res_user_id', '=', user.id)]
+        </field>
+        <field name="groups" eval="[(4, ref('group_hr_hospital_doctor'))]"/>
+    </record>
+
+    <record id="hr_hospital_rule_manager_visit" model="ir.rule">
+        <field name="name">Manager can read all visits</field>
+        <field name="model_id" ref="model_hr_hospital_patient_visit"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_hr_hospital_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="hr_hospital_rule_manager_diagnosis" model="ir.rule">
+        <field name="name">Manager can read all diagnosis</field>
+        <field name="model_id" ref="model_hr_hospital_diagnosis"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_hr_hospital_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="hr_hospital_rule_admin_visit" model="ir.rule">
+        <field name="name">Admin can read and delete all visits</field>
+        <field name="model_id" ref="model_hr_hospital_patient_visit"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_hr_hospital_admin'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+        <record id="hr_hospital_rule_admin_diagnosis" model="ir.rule">
+        <field name="name">Admin can read and delete all diagnosis</field>
+        <field name="model_id" ref="model_hr_hospital_diagnosis"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_hr_hospital_admin'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+</odoo>

@@ -37,8 +37,13 @@
                             <group>
                                 <field name="hr_hospital_doctor_id"/>
                                 <field name="hr_hospital_patient_id"/>
-                                <field name="hr_hospital_diagnosis_ids"/>
-<!--                                <field name="status"/>-->
+                                <field name="hr_hospital_diagnosis_ids">
+                                    <tree>
+                                       <field name="approved"/>
+                                       <field name="hr_hospital_disease_id"/>
+                                       <field name="description"/>
+                                    </tree>
+                                </field>
                                 <field name="scheduled_datetime"/>
                                 <field name="visit_datetime"/>
                             </group>

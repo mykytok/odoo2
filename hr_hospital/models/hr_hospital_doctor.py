@@ -12,6 +12,8 @@ class Doctor(models.Model):
     _inherit = 'hr.hospital.abstract.person'
     _description = 'Doctor'
 
+    res_user_id = fields.Many2one('res.users')
+
     doctors_specialty_id = fields.Many2one(
         comodel_name='hr.hospital.doctors.specialty',
         string="Doctor's specialty",

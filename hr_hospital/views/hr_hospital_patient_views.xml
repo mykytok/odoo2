@@ -38,6 +38,7 @@
                     <sheet>
                         <group>
                             <group>
+                                <field name="res_user_id"/>
                                 <field name="full_name"/>
                                 <field name="phone"/>
                                 <field name="gender" widget="radio"/>
@@ -55,7 +56,7 @@
                                 <field name="description"/>
                             </group>
                             <field name="diagnosis_ids">
-                               <tree limit="15" create="False" delete="False">
+                               <tree create="False" delete="False">
                                    <field name="doctor_id"/>
                                    <field name="approved"/>
                                    <field name="hr_hospital_disease_id"/>

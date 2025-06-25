@@ -15,6 +15,8 @@
     },
 
     'data': [
+        'security/hr_hospital_groups.xml',
+        'security/hr_hospital_security.xml',
         'security/ir.model.access.csv',
 
         'wizard/hr_hospital_persdoc_update_wzd_view.xml',
@@ -31,6 +33,7 @@
         'views/hr_hospital_doctor_views.xml',
 
         'data/hr.hospital.disease.csv',
+
     ],
     'demo': [
 
