@@ -6,6 +6,8 @@ _logger = logging.getLogger(__name__)
 
 
 class AbstractPerson(models.AbstractModel):
+    """Abstract person model
+                """
     _name = 'hr.hospital.abstract.person'
     _description = 'Person'
 

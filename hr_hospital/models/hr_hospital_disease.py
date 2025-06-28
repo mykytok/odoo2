@@ -6,10 +6,15 @@ _logger = logging.getLogger(__name__)
 
 
 class Disease(models.Model):
+    """A model for storing Disease
+                    """
+
     _name = 'hr.hospital.disease'
     _description = 'Disease'
 
-    name = fields.Char()
+    name = fields.Char(
+        translate=True,
+    )
 
     parent_id = fields.Many2one(
         comodel_name='hr.hospital.disease',

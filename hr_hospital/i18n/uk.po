@@ -64,7 +64,7 @@ msgstr "Адміністратор"
 #. module: hr_hospital
 #: model:res.groups,comment:hr_hospital.group_hr_hospital_admin
 msgid "Administrators of HR Hospital"
-msgstr "Адміністратори HR Hospital"
+msgstr "Адміністратори Лікарні"
 
 #. module: hr_hospital
 #: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_patient__age
@@ -239,7 +239,7 @@ msgstr "Лікарі"
 #. module: hr_hospital
 #: model:res.groups,comment:hr_hospital.group_hr_hospital_doctor
 msgid "Doctors of HR Hospital"
-msgstr "Лікарі HR Hospital"
+msgstr "Лікарі Лікарні"
 
 #. module: hr_hospital
 #: model_terms:ir.ui.view,arch_db:hr_hospital.hr_hospital_patient_visit_calendar
@@ -289,7 +289,7 @@ msgstr "Стать"
 #: model:ir.module.category,name:hr_hospital.category_hr_hospital
 #: model:ir.ui.menu,name:hr_hospital.hr_hospital_main_menu
 msgid "HR Hospital"
-msgstr "HR Hospital"
+msgstr "Лікарня"
 
 #. module: hr_hospital
 #: model_terms:ir.ui.view,arch_db:hr_hospital.hr_hospital_diagnosis_report_form
@@ -327,7 +327,7 @@ msgstr "Інтерни"
 #. module: hr_hospital
 #: model:res.groups,comment:hr_hospital.group_hr_hospital_intern
 msgid "Interns of HR Hospital"
-msgstr "Інтерни HR Hospital"
+msgstr "Інтерни Лікарні"
 
 #. module: hr_hospital
 #: model_terms:ir.ui.view,arch_db:hr_hospital.hr_hospital_doctor_kanban
@@ -378,7 +378,7 @@ msgstr "Менеджер"
 #. module: hr_hospital
 #: model:res.groups,comment:hr_hospital.group_hr_hospital_manager
 msgid "Managers of HR Hospital"
-msgstr "Менеджери HR Hospital"
+msgstr "Менеджери Лікарні"
 
 #. module: hr_hospital
 #: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_doctor__mentor_doctor_id
@@ -479,7 +479,7 @@ msgstr "Пацієнти"
 #. module: hr_hospital
 #: model:res.groups,comment:hr_hospital.group_hr_hospital_patient
 msgid "Patients of HR Hospital"
-msgstr "Пацієнти HR Hospital"
+msgstr "Пацієнти Лікарні"
 
 #. module: hr_hospital
 #: model:ir.model,name:hr_hospital.model_hr_hospital_abstract_person
@@ -589,3 +589,63 @@ msgstr "Візити"
 #: model_terms:ir.ui.view,arch_db:hr_hospital.doctor_report_main_template
 msgid "Visits history"
 msgstr "Історія візитів"
+
+#. module: hr_hospital
+#: model:hr.hospital.disease,name:hr_hospital.hrh_disease_2
+msgid "infection"
+msgstr "інфекція"
+
+#. module: hr_hospital
+#: model:hr.hospital.disease,name:hr_hospital.hrh_disease_4
+msgid "test disease 1"
+msgstr "тест захворювання 1"
+
+#. module: hr_hospital
+#: model:hr.hospital.disease,name:hr_hospital.hrh_disease_6
+msgid "test disease 1 1"
+msgstr "тест захворювання 1 1"
+
+#. module: hr_hospital
+#: model:hr.hospital.disease,name:hr_hospital.hrh_disease_7
+msgid "test disease 1 2"
+msgstr "тест захворювання 1 2"
+
+#. module: hr_hospital
+#: model:hr.hospital.disease,name:hr_hospital.hrh_disease_8
+msgid "test disease 1 2 1"
+msgstr "тест захворювання 1 2 1"
+
+#. module: hr_hospital
+#: model:hr.hospital.disease,name:hr_hospital.hrh_disease_5
+msgid "test disease 2"
+msgstr "тест захворювання 2"
+
+#. module: hr_hospital
+#: model:hr.hospital.disease,name:hr_hospital.hrh_disease_9
+msgid "test disease 2 1"
+msgstr "тест захворювання 2 1"
+
+#. module: hr_hospital
+#: model:hr.hospital.disease,name:hr_hospital.hrh_disease_10
+msgid "test disease 2 2"
+msgstr "тест захворювання 2 2"
+
+#. module: hr_hospital
+#: model:hr.hospital.disease,name:hr_hospital.hrh_disease_11
+msgid "test disease 2 3"
+msgstr "тест захворювання 2 3"
+
+#. module: hr_hospital
+#: model:hr.hospital.disease,name:hr_hospital.hrh_disease_3
+msgid "trauma"
+msgstr "травма"
+
+#. module: hr_hospital
+#: model:hr.hospital.disease,name:hr_hospital.hrh_disease_1
+msgid "virus"
+msgstr "вірус"
+
+#. module: hr_hospital
+#: model:hr.hospital.disease,name:hr_hospital.hrh_disease_12
+msgid "virus 1"
+msgstr "вірус 1"

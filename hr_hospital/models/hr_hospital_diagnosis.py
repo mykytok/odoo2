@@ -6,6 +6,9 @@ _logger = logging.getLogger(__name__)
 
 
 class Diagnosis(models.Model):
+    """A model for storing Diagnosis
+                """
+
     _name = 'hr.hospital.diagnosis'
     _description = 'Diagnosis'
 

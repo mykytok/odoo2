@@ -4,7 +4,7 @@
         <record id="hr_hospital_patient_visit_1" model="hr.hospital.patient.visit">
             <field name="scheduled_datetime" eval="DateTime.now() - relativedelta(days=35) - relativedelta(minutes=5)"/>
             <field name="visit_datetime" eval="DateTime.now() - relativedelta(days=34) - relativedelta(minutes=2)"/>
-            <field name="status">completed</field>
+            <field name="status">scheduled</field>
             <field name="hr_hospital_doctor_id" ref="hr_hospital.hrh_doctor_1"/>
             <field name="hr_hospital_patient_id" ref="hr_hospital.hrh_patient_1"/>
             <field name="description">Demo patient visit 1</field>
@@ -12,7 +12,7 @@
         <record id="hr_hospital_patient_visit_2" model="hr.hospital.patient.visit">
             <field name="scheduled_datetime" eval="DateTime.now() - relativedelta(days=30) - relativedelta(minutes=10)"/>
             <field name="visit_datetime" eval="DateTime.now() - relativedelta(days=30) - relativedelta(minutes=15)"/>
-            <field name="status">completed</field>
+            <field name="status">scheduled</field>
             <field name="hr_hospital_doctor_id" ref="hr_hospital.hrh_doctor_1"/>
             <field name="hr_hospital_patient_id" ref="hr_hospital.hrh_patient_2"/>
             <field name="description">Demo patient visit 2</field>
@@ -20,7 +20,7 @@
         <record id="hr_hospital_patient_visit_3" model="hr.hospital.patient.visit">
             <field name="scheduled_datetime" eval="DateTime.now() - relativedelta(days=10) - relativedelta(minutes=222)"/>
             <field name="visit_datetime" eval="DateTime.now() - relativedelta(days=10) - relativedelta(minutes=55)"/>
-            <field name="status">completed</field>
+            <field name="status">scheduled</field>
             <field name="hr_hospital_doctor_id" ref="hr_hospital.hrh_doctor_1"/>
             <field name="hr_hospital_patient_id" ref="hr_hospital.hrh_patient_3"/>
             <field name="description">Demo patient visit 3</field>

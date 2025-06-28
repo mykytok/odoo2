@@ -8,6 +8,9 @@ _logger = logging.getLogger(__name__)
 
 
 class Doctor(models.Model):
+    """A model for storing doctors
+            """
+
     _name = 'hr.hospital.doctor'
     _inherit = 'hr.hospital.abstract.person'
     _description = 'Doctor'
@@ -58,6 +61,12 @@ class Doctor(models.Model):
 
     @api.constrains('mentor_doctor_id')
     def _check_mentor_doctor_is_intern(self):
+        """Checks if the doctor is an intern.
+
+                :mentor_doctor_id: link to hr_hospital_doctor check.
+                :return None:
+                """
+
         for rec in self:
             _logger.info('==========================')
             _logger.info(rec.mentor_doctor_id.is_intern)
@@ -80,5 +89,10 @@ class Doctor(models.Model):
             record.is_mentor = record.intern_doctor_ids
 
     def archive(self):
+        """Archive doctor.
+
+                        :None:
+                        :return None:
+                        """
         for rec in self:
-            rec.write({'active': False})
+            rec.write({'active': True})

@@ -8,6 +8,9 @@ _logger = logging.getLogger(__name__)
 
 
 class PatientVisit(models.Model):
+    """A model for storing Patient Visit
+                                """
+
     _name = 'hr.hospital.patient.visit'
     _description = 'Patient visit'
 
@@ -77,6 +80,11 @@ class PatientVisit(models.Model):
     #     return super().unlink()
     @api.ondelete(at_uninstall=False)
     def _unlink_is_diagnosis(self):
+        """Before deleting, it checks for a diagnosis and throws an error if a diagnosis exists.
+
+                        :None:
+                        :return None:
+                        """
         for rec in self:
             if rec.hr_hospital_diagnosis_ids:
                 raise exceptions.UserError(
@@ -91,6 +99,11 @@ class PatientVisit(models.Model):
         'scheduled_datetime'
     )
     def _check_duplicate_visit_in_scheduled_date(self):
+        """It is forbidden to create a repeat patient visit to the same doctor on the same day.
+
+                        :None:
+                        :return None:
+                        """
         ltz = pytz.timezone(self.env.user.tz)
         for rec in self:
             scheduled_datetime_utcnow = rec.scheduled_datetime.utcnow()

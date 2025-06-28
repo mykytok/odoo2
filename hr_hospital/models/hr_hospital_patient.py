@@ -7,6 +7,9 @@ _logger = logging.getLogger(__name__)
 
 
 class Patient(models.Model):
+    """A model for storing Patient
+                            """
+
     _name = 'hr.hospital.patient'
     _inherit = 'hr.hospital.abstract.person'
     _description = 'Patient'
