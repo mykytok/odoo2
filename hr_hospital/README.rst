@@ -1,8 +1,8 @@
 HR Hospital: Assignments from odoo.school courses
 The module adds the ability to manage patient visit schedules. Doctors can also record diagnoses.
 Installation
-To install this module, you need to:
 
+To install this module, you need to:
 Clone repository.
 Add the repository path to the config file.
 Update the app list.
