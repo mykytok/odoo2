@@ -9,6 +9,7 @@
                     <field name="is_intern"/>
                     <field name="mentor_doctor_id"/>
                     <field name="phone"/>
+                    <field name="patient_ids"/>
                 </tree>
             </field>
         </record>

@@ -1,8 +1,6 @@
 import logging
 
-from odoo import models, fields, api, exceptions
-
-from . import hr_hospital_abstract_person
+from odoo import models, fields, api, exceptions, _
 
 _logger = logging.getLogger(__name__)
 
@@ -71,7 +69,7 @@ class Doctor(models.Model):
             _logger.info('==========================')
             _logger.info(rec.mentor_doctor_id.is_intern)
             if rec.mentor_doctor_id.is_intern:
-                raise exceptions.UserError("Intern cannot be a mentor.")
+                raise exceptions.UserError(_("Intern cannot be a mentor."))
 
     @api.onchange('is_intern')
     def _onchange_is_intern(self):

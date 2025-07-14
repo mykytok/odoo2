@@ -2,7 +2,7 @@ import logging
 
 import pytz
 
-from odoo import models, fields, api, tools, exceptions
+from odoo import models, fields, api, tools, exceptions, _
 
 _logger = logging.getLogger(__name__)
 
@@ -59,17 +59,17 @@ class PatientVisit(models.Model):
                         'hr_hospital_doctor_id',
                         'visit_datetime'
                     ])):
-                raise exceptions.UserError(
+                raise exceptions.UserError(_(
                     'It is forbidden to change fields "Doctor", '
                     '"Date and time of visit" '
-                    'after setting the status Completed')
+                    'after setting the status Completed'))
             if (rec.active
                     and 'active' in vals
                     and not vals['active']
                     and rec.hr_hospital_diagnosis_ids):
-                raise exceptions.UserError(
+                raise exceptions.UserError(_(
                     'It is forbidden to Archive if there are Diagnoses'
-                )
+                ))
         return super().write(vals)
 
     # # On Delete object
@@ -80,16 +80,17 @@ class PatientVisit(models.Model):
     #     return super().unlink()
     @api.ondelete(at_uninstall=False)
     def _unlink_is_diagnosis(self):
-        """Before deleting, it checks for a diagnosis and throws an error if a diagnosis exists.
+        """Before deleting, it checks for a diagnosis
+            and throws an error if a diagnosis exists.
 
                         :None:
                         :return None:
                         """
         for rec in self:
             if rec.hr_hospital_diagnosis_ids:
-                raise exceptions.UserError(
+                raise exceptions.UserError(_(
                     'It is forbidden to Delete if there are Diagnoses'
-                )
+                ))
 
     # Додати перевірку, щоб не можна було записати одного
     # пацієнта до одного лікаря в один день більше одного разу.
@@ -99,7 +100,8 @@ class PatientVisit(models.Model):
         'scheduled_datetime'
     )
     def _check_duplicate_visit_in_scheduled_date(self):
-        """It is forbidden to create a repeat patient visit to the same doctor on the same day.
+        """It is forbidden to create a repeat
+            patient visit to the same doctor on the same day.
 
                         :None:
                         :return None:
@@ -121,6 +123,6 @@ class PatientVisit(models.Model):
                     ('scheduled_datetime', '<=', end_day)
                 ]))
             if other_visits_in_scheduled_date:
-                raise exceptions.UserError(
+                raise exceptions.UserError(_(
                     "On the scheduled day, "
-                    "the visit to the current doctor is already present.")
+                    "the visit to the current doctor is already present."))

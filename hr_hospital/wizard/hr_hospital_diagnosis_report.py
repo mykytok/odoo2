@@ -28,7 +28,9 @@ class DiagnosisReport(models.TransientModel):
     def default_get(self, vals):
         res = super().default_get(vals)
         if self.env.context.get('active_ids'):
-            active_doctor_ids = self.env['hr.hospital.doctor'].browse(self.env.context.get('active_ids'))
+            active_doctor_ids = self.env['hr.hospital.doctor'].browse(
+                self.env.context.get('active_ids')
+            )
             res['doctor_ids'] = [(6, 0, active_doctor_ids.mapped('id'))]
         return res
 
@@ -58,7 +60,10 @@ class DiagnosisReport(models.TransientModel):
 
         return {
             'name': 'Diagnosis',
-            'views': [[self.env.ref('hr_hospital.hr_hospital_diagnosis_tree_group_disease').id,'tree']],
+            'views': [[
+                self.env.ref('hr_hospital.hr_hospital_diagnosis_tree_group_disease').id,
+                'tree'
+            ]],
             'type': 'ir.actions.act_window',
             'res_model': 'hr.hospital.diagnosis',
             'view_mode': 'tree',

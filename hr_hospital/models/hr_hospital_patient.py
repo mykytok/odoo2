@@ -63,11 +63,10 @@ class Patient(models.Model):
                              < (record.birth_date.month,
                                 record.birth_date.day)))
 
-
     def current_patient_visit_status(self, doctor_id):
         self.ensure_one()
         rec = self.env['hr.hospital.patient.visit'].search(
-            [('hr_hospital_doctor_id', '=', self.hr_hospital_personal_doctor_id.id),
+            [('hr_hospital_doctor_id', '=', doctor_id),
              ('hr_hospital_patient_id', '=', self.id)],
             order='scheduled_datetime desc',
             limit=1
